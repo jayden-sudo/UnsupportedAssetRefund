@@ -47,7 +47,7 @@ In this scenario, users face a risk: depositing assets in ways other than callin
 
 To address this challenge, we introduce AxiomRepl. By proving to `SomeProtocol` that a user has made an unsupported token transfer, AxiomRepl allows the user to retrieve the corresponding assets.
 
-For supported tokens (like `allowedToken`), if users accidentally deposit assets outside the `deposit()` function, the retrieval process might be more intricate. A possible scenario involves User A staking tokens as collateral for a retrieval claim, with a 1-day challenge window. If, within this period, User B (or any user) can provide a zero-knowledge proof (zk-proof) that User A's deposit transaction contains the `event Deposit(address indexed user, uint256 amount)`, it implies User A acted dishonestly. As a result, User B receives all of User A's collateral. Given the complexity of this scenario, we don't plan to include it in the current demo.
+For supported tokens (like `allowedToken`), if users accidentally deposit assets outside the `deposit()` function, the retrieval process might be more intricate. A possible scenario involves user Alice staking tokens as collateral for a retrieval claim, with a 1-day challenge window. If, within this period, user Bob (or any user) can provide a zero-knowledge proof that User Alice's deposit transaction contains the `event Deposit(address indexed user, uint256 amount)`, it implies user Alice acted dishonestly. As a result, user Bob receives all of user Alice's collateral. Given the complexity of this scenario, we don't plan to include it in the current demo.
 
 ## Code Structure
 
