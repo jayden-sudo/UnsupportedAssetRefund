@@ -1,0 +1,11 @@
+{
+  "name": "proof-of-token-transfer",
+  "scripts": {
+    "build": "forge build --sizes",
+    "test": "forge test -vvv",
+    "deploy": "source .env && forge script script/ProofOfTokenTransfer.s.sol:ProofOfTokenTransferScript --broadcast --verify --rpc-url ${GOERLI_RPC_URL} --etherscan-api-key $GOERLI_SCAN_API_KEY",
+    "verify": "source .env && forge verify-contract --chain goerli 0x3dDce6DF15Da1DA7b03Bfb81c88f72392e3A4799 ProofOfTokenTransfer --etherscan-api-key $GOERLI_SCAN_API_KEY --constructor-args 0x00000000000000000000000028cee427fcd58e5ef1ce4c93f877b621e2db66df9a7ad4f7837463f317b2be9a2ae17c44ac529839f607f4e6dd870c8c8c19df8f --watch  --show-standard-json-input > 1.json",
+    "gas-report": "forge test --gas-report"
+  },
+  "devDependencies": {}
+}
