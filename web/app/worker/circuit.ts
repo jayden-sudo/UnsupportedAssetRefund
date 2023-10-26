@@ -22,7 +22,7 @@ const defaultInputs = {
   logIdx: 0
 };
 type CircuitInputType = typeof defaultInputs;
-export interface CircuitInputs extends CircuitInputType { }
+export interface CircuitInputs extends CircuitInputType {}
 export interface CircuitValueInputs {
   blockNumber: CircuitValue;
   txIdx: CircuitValue;
