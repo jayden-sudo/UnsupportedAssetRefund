@@ -24,12 +24,6 @@ export const buildSendQuery = async (providerUri: string, { compute, callback, d
     const { axiom, axiomQueryAddress, axiomAbi } = useAxiom(providerUri);
     const query = axiom.query as QueryV2;
     const qb = query.new(dataQuery, compute, callback);
-    const BuiltQuery = qb.getBuiltQuery();
-    if (BuiltQuery === undefined) {
-        alert('BuiltQuery is undefined');
-        throw new Error('BuiltQuery is undefined');
-    }
-    console.log('querySchema', qb.getBuiltQuery()!.querySchema);
     const {
         dataQueryHash,
         dataQuery: dataQueryEncoded,
@@ -40,13 +34,21 @@ export const buildSendQuery = async (providerUri: string, { compute, callback, d
         sourceChainId
     } = await qb.build();
 
+
+    const BuiltQuery = qb.getBuiltQuery();
+    if (BuiltQuery === undefined) {
+        alert('BuiltQuery is undefined');
+        throw new Error('BuiltQuery is undefined');
+    }
+    console.log('querySchema', qb.getBuiltQuery()!.querySchema);
+
     const salt = getRandom32Bytes();
 
     return ({
         address: axiomQueryAddress as `0x${string}`,
         abi: axiomAbi,
         functionName: 'sendQuery',
-        value: parseEther('0.02'),
+        value: parseEther('0.03'),
         args: [sourceChainId, dataQueryHash, computeQuery, callbackQuery, salt, maxFeePerGas, callbackGasLimit, address, dataQueryEncoded],
     });
 
