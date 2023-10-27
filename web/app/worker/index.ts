@@ -62,7 +62,7 @@ export class AxiomCircuit extends CircuitScaffold {
         if (!this.proof) throw new Error("No proof generated");
         let proofString = "";
         const instances = this.getInstances();
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < instances.length / 2; i++) {
             const instanceHi = BigInt(instances[2 * i]);
             const instanceLo = BigInt(instances[2 * i + 1]);
             const instance = instanceHi * BigInt(2 ** 128) + instanceLo;
