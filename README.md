@@ -55,7 +55,7 @@ For supported tokens (like `allowedToken`), if users accidentally deposit assets
   
 - **Smart Contract:** [ProofOfTokenTransfer on GitHub](https://github.com/jayden-sudo/UnsupportedAssetRefund/blob/main/src/ProofOfTokenTransfer.sol)
   
-- **Test Transaction:** [Transaction on Goerli Etherscan](https://goerli.etherscan.io/tx/0x7fe7c993a0720c78414942c9ee8fc062bfaa0419064f0c3d691699843f8d3ade#eventlog)
+- **Test Transaction:** [Transaction on Goerli Etherscan](https://goerli.etherscan.io/tx/0x74ddc27e4d38323cccdea269486d86ee97563d3379126a983c01a824345eb507#eventlog)
 
 ---
 
