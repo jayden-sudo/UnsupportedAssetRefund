@@ -15,7 +15,7 @@ const providerUri = `https://eth-goerli.g.alchemy.com/v2/${process.env.NEXT_PUBL
 export default function Home() {
 
   const [input, setInput] = useState<string>(JSON.stringify(circuit.defaultInputs));
-  const [target, setTarget] = useState<string>("0x3dDce6DF15Da1DA7b03Bfb81c88f72392e3A4799");
+  const [target, setTarget] = useState<string>("0x430faeE7cF005d848dE5BD4F6c385D552430aE04");
   const [extraData, setExtraData] = useState<string>("0x0");
   const { address } = useAccount();
 

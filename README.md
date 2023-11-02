@@ -53,75 +53,85 @@ For supported tokens (like `allowedToken`), if users accidentally deposit assets
 
 - **AxiomRepl:** [Link to AxiomRepl](https://repl.axiom.xyz/?gist=966aacec3eff95abae5c31a6d5f705ce)
   
-- **Smart Contract:** [ProofOfTokenTransfer on GitHub](https://github.com/jayden-sudo/UnsupportedAssetRefund/blob/main/src/ProofOfTokenTransfer.sol)
+- **Smart Contract:** [UnsupportedAssetRefundProtocol on GitHub](https://github.com/jayden-sudo/UnsupportedAssetRefund/tree/main/src)
   
-- **Test Transaction:** [Transaction on Goerli Etherscan](https://goerli.etherscan.io/tx/0x74ddc27e4d38323cccdea269486d86ee97563d3379126a983c01a824345eb507#eventlog)
+- **Test Transaction:** [Transaction on Goerli Etherscan](https://goerli.etherscan.io/tx/0x904bd694c92330f43490914c2ebef26b25fdf117dc93399e2658a72dc5b88d7f#eventlog)
 
 ---
 
-## Foundry
+## UnsupportedAssetRefund Protocol Demonstration
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This demonstration shows how the UnsupportedAssetRefund Protocol can be used to refund unsupported ERC20 tokens that were sent to the protocol. Follow the steps below to see how the process works.
 
-Foundry consists of:
+### Prerequisites
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Before you begin, make sure you have the following installed:
 
-## Documentation
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
 
-<https://book.getfoundry.sh/>
+### Step-by-Step Guide
 
-## Usage
+#### 1. Transfer Unsupported ERC20 Token
 
-### Build
+Transfer an unsupported ERC20 token to the UnsupportedAssetRefundProtocol smart contract to simulate a deposit that needs to be refunded.
 
-```shell
-forge build
-```
+- ![1](imgs/1.png)
+- ![2](imgs/2.png)
 
-### Test
+- ERC20 Token Address: [0xbaE940De6ef7D897Ad76bA8bfa7f93939F82E976](https://goerli.etherscan.io/address/0xbaE940De6ef7D897Ad76bA8bfa7f93939F82E976#readContract)
+- UnsupportedAssetRefundProtocol Address: [0x430faeE7cF005d848dE5BD4F6c385D552430aE04](https://goerli.etherscan.io/address/0x430faeE7cF005d848dE5BD4F6c385D552430aE04#code)
 
-```shell
-forge test
-```
+Transaction Example:
 
-### Format
+- TX Hash: [0x674a5882e6191482b80c625a805736c7ec6c85d0b909a7ba8308c8a5449c838a](https://goerli.etherscan.io/tx/0x674a5882e6191482b80c625a805736c7ec6c85d0b909a7ba8308c8a5449c838a)
 
-```shell
-forge fmt
-```
+#### 2. Submit zk Proof
 
-### Gas Snapshots
+Submit a zero-knowledge proof to the protocol to initiate the refund process.
 
-```shell
-forge snapshot
-```
+1. Navigate to the `web` folder and start the development server:
 
-### Anvil
+   ```sh
+   yarn dev
+   ```
 
-```shell
-anvil
-```
+2. Open your browser and go to `localhost:3000`.
 
-### Deploy
+3. Enter the transaction details of the unsupported token transfer:
 
-```shell
-forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+   ```json
+   {"blockNumber":9969281,"txIdx":12,"logIdx":0}
+   ```
 
-### Cast
+4. Click on "Build and Send Query (on Goerli)".
 
-```shell
-cast <subcommand>
-```
+   1. ![3](imgs/3.png)
+   2. Proof Transaction:
+      1. TX Hash: [0xa4d7df3613d761c36efad9c685d5ca565a25366a1748e48bf3e3ef3e9864dd1b](https://goerli.etherscan.io/tx/0xa4d7df3613d761c36efad9c685d5ca565a25366a1748e48bf3e3ef3e9864dd1b)
 
-### Help
 
-```shell
-forge --help
-anvil --help
-cast --help
-```
+
+#### 3. AxiomRepl Callback
+
+After the proof is submitted and verified, AxiomRepl will initiate a callback request.
+
+- ![4](imgs/4.png)
+- ![5](imgs/5.png)
+
+- Axiom Explorer Query: [Axiom Explorer Link](https://explorer.axiom.xyz/v2/goerli/mock/query/37936641960384140553271310167170655117928683811062763716838577295416631454366)
+- Corresponding Etherscan Transaction: [0xd3ab31ddad9991c7bf37b8f0546a81675903757ab8a5217eea3a12a03e2d9f7c](https://goerli.etherscan.io/tx/0xd3ab31ddad9991c7bf37b8f0546a81675903757ab8a5217eea3a12a03e2d9f7c#eventlog)
+
+#### 4. Initiate UnsupportedTokenWithdrawal
+
+The user can now initiate a withdrawal of the unsupported token.
+
+Withdrawal Transaction:
+
+- ![6](imgs/6.png)
+- ![7](imgs/7.png)
+- TX Hash: [0x904bd694c92330f43490914c2ebef26b25fdf117dc93399e2658a72dc5b88d7f](https://goerli.etherscan.io/tx/0x904bd694c92330f43490914c2ebef26b25fdf117dc93399e2658a72dc5b88d7f)
+
+
+
+This demonstration outlines the process of refunding unsupported ERC20 tokens using the UnsupportedAssetRefund Protocol. By following the steps above, users can retrieve their tokens safely and efficiently.

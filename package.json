@@ -3,8 +3,9 @@
   "scripts": {
     "build": "forge build --sizes",
     "test": "forge test -vvv",
-    "deploy": "source .env && forge script script/ProofOfTokenTransfer.s.sol:ProofOfTokenTransferScript --broadcast --verify --rpc-url ${GOERLI_RPC_URL} --etherscan-api-key $GOERLI_SCAN_API_KEY",
-    "verify": "source .env && forge verify-contract --chain goerli 0x3dDce6DF15Da1DA7b03Bfb81c88f72392e3A4799 ProofOfTokenTransfer --etherscan-api-key $GOERLI_SCAN_API_KEY --constructor-args 0x00000000000000000000000028cee427fcd58e5ef1ce4c93f877b621e2db66df9a7ad4f7837463f317b2be9a2ae17c44ac529839f607f4e6dd870c8c8c19df8f --watch  --show-standard-json-input > 1.json",
+    "deploy": "source .env && forge script script/UnsupportedAssetRefundProtocol.s.sol:UnsupportedAssetRefundProtocolScript --broadcast --verify --rpc-url ${GOERLI_RPC_URL} --etherscan-api-key $GOERLI_SCAN_API_KEY",
+    "verifyToken": "source .env && forge verify-contract --chain goerli 0xDd19d244821e7330CE9132C80c53c4320f9844E2 devToken --etherscan-api-key $GOERLI_SCAN_API_KEY --constructor-args 0x0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000155f646576546f6b656e4e6f74537570706f72746564000000000000000000000000000000000000000000000000000000000000000000000000000000000000155f646576546f6b656e4e6f74537570706f727465640000000000000000000000 --watch  --show-standard-json-input > 1.json",
+    "verifyUnsupportedAssetRefundProtocol": "source .env && forge verify-contract --chain goerli 0x430faeE7cF005d848dE5BD4F6c385D552430aE04 UnsupportedAssetRefundProtocol --etherscan-api-key $GOERLI_SCAN_API_KEY --constructor-args 0x000000000000000000000000dd19d244821e7330ce9132c80c53c4320f9844e200000000000000000000000028cee427fcd58e5ef1ce4c93f877b621e2db66df9a7ad4f7837463f317b2be9a2ae17c44ac529839f607f4e6dd870c8c8c19df8f --watch  --show-standard-json-input > 1.json",
     "gas-report": "forge test --gas-report"
   },
   "devDependencies": {}
